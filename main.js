@@ -36,7 +36,7 @@ const PORT = process.env.PORT || 3000
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 // console.log({ opts })
-global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || 'â€ŽxzXZ/i!#$%+Â£Â¢â‚¬Â¥^Â°=Â¶âˆ†Ã—Ã·Ï€âˆšâœ“Â©Â®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
@@ -67,7 +67,7 @@ loadDatabase()
 // if (opts['cluster']) {
 //   require('./lib/cluster').Cluster()
 // }
-global.authFile = `${opts._[0] || 'session'}.json`
+global.authFile = `${opts._[0] || 'haori'}.json`
 global.isInit = !fs.existsSync(authFile)
 const { state, saveState } = useSingleFileAuthState(global.authFile)
 
@@ -132,9 +132,19 @@ global.reloadHandler = function (restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate)
   }
 
-  conn.welcome = `*Hai @user ! 👋*
-         ‷✧ Selamat Datang di Grup
-           *@subject*`
+  conn.welcome = `*Hai @user ! ðŸ‘‹*
+         â€·âœ§ Selamat Datang di Grup
+           *@subject*
+           
+â•­â—ª *Intro Member Baru* â—ªâ”€
+â”‚ âœ§ *Nama:*
+â”‚ âœ§ *Umur:*
+â”‚ âœ§ *Status:*
+â”‚ âœ§ *Askot:*
+â•°â—ª
+  
+              *â—Œ  âƒâœ§âª¼ Deskripsi Group ãƒŸ*
+  @desc`
   conn.bye = 'Selamat tinggal @user!'
   conn.spromote = '@user sekarang admin!'
   conn.sdemote = '@user sekarang bukan admin!'
