@@ -22,18 +22,18 @@ global.APIKeys = { // APIKey Here
   'https://api.neoxr.eu.org': 'yntkts',
   'https://api.xteam.xyz': 'Apikeys',
   'https://melcanz.com': 'Apikeys',
-  'https://api.lolhuman.xyz': 'Apikeys',
+  'https://api.lolhuman.xyz': 'SGWN',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.me': 'apivinz',
   'https://pencarikode.xyz': 'pais',
   'https://hardianto.xyz': 'hardianto',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll'
 }
-global.packname ='Andry Za Apchier'
-global.author ='6285894148101
-global.wm = Andry Za Apchier + 'Andry Za Apchier ' + Eɪɢʜᴛʏ-Sɪx Mᴅ
+global.packname ='Made by'
+global.author ='Society-MD'
+global.wm ='S o c i e t y - M d'
 
-global.multiplier = 100 // The higher, The harder levelup
+global.multiplier = 10 // The higher, The harder levelup
 
 //=========== Requirements ==========//
 
