@@ -9,21 +9,7 @@ const defaultMenu = {
   before: `
 ┌─〔 %me 〕
 ├ *${ucapan()} %name*
-│
 ├ Tersisa *%limit Limit*
-├ Role *%role*
-├ Level *%level (%exp / %maxexp)* [%xp4levelup]
-├ %totalexp XP secara Total
-│
-├ Tanggal: *%week %weton, %date*
-├ Tanggal Islam: *%dateIslamic*
-├ Waktu: *%time*
-│
-├ Uptime: *%uptime (%muptime)*
-├ Database: %rtotalreg dari %totalreg
-├ Github:
-├ %github
-│
 ├ Note :
 ├ *Ⓟ* = Premium
 ├ *Ⓛ* = Limit
@@ -33,7 +19,7 @@ const defaultMenu = {
   body: '├ %cmd %islimit %isPremium',
   footer: '└────\n',
   after: `
-*%npmname@^%version*
+*Society-MD@^%version*
 ${'```%npmdesc```'}
 `,
 }
@@ -267,13 +253,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     ]
     const listMessage = {
       text: `
-❏ *U S E R   I N F O*
+❏ *S T A T U S   I N F O*
 • Nama    : *${name}*
 • Limit   : *${limit}*
-• Status  : *${global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) ? 'Owner 🗿' : 'Users ⚔️'}*
-• Premium : *${premium ? `${conn.msToDate(premiumTime - new Date() * 1)}` : 'Gratisan'}*
-
-❏ *S T A T U S   I N F O*
 • Total User : *${rtotalreg} dari ${totalreg}*
 • Tersisa    : *${limit} Limit*
 • Role       : *${role}*
@@ -281,18 +263,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
 ❏ 𝙏𝙄𝙈𝙀
 » Wib : *${time}*
-» Tanggal : *${week} ${weton} ${date}*
-
-❏ 𝙏𝘼𝙃𝙐𝙉 𝘽𝘼𝙍𝙐
-_*${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik*_
-
-❏ 𝙍𝘼𝙈𝘼𝘿𝘼𝙉
-_*${harii} Hari ${jamm} Jam ${menitt} Menit ${detikk} Detik*_
-
-❏ 𝙐𝙇𝘼𝙉𝙂 𝙏𝘼𝙃𝙐𝙉 𝙊𝙒𝙉𝙀𝙍
-_*${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik*_
-
-${pe}Note: Jika ada Fitur yg Error Lapor ke owner${pe}`,
+» Tanggal : *${week} ${weton} ${date}*`,
       footer: wm,
       title: judul,
       buttonText: "Klik Disini",
@@ -349,7 +320,22 @@ ${pe}Note: Jika ada Fitur yg Error Lapor ke owner${pe}`,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send3TemplateButtonImg(m.chat, await genProfile(conn, m), text.trim(), wm, `🏅Owner`, `${_p}owner`, `🎖ThanksTo`, `${_p}tqto`, `🎗  Donasi  🎗`, `${_p}donasi`, m)
+    
+    
+    
+    let fkon = { key: { fromMe: false, participant: '0@s.whatsapp.net', ...(m.chat ? { remoteJid: 'status@broadcast' } : {}) }, message: { contactMessage: { displayName: 'S O C I E T Y', vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}} 
+    
+    
+    //----------- M E N U ------------//
+    
+    
+    //await conn.send3ButtonLoc(m.chat, await (await fetch('https://telegra.ph/file/151930286e27150f8c4f4.jpg')).buffer(), '◈┈┉────[ *LIST MENU* ]────┉┈◈' , text.trim(), 'Owner', '.owner', 'Donasi', '.donasi', 'Rules', '.rules', m)
+    
+    
+    await conn.send2ButtonImg(m.chat, await (await fetch('https://telegra.ph/file/151930286e27150f8c4f4.jpg')).buffer(), '◈┈┉[ *LIST MENU* ]┉┈◈', text, 'OWNER', '.owner', '\n\nSAYA PEDO DAN SAYA BANGGA ꒪꒳꒪', 'a', fkon, { contextInfo: { forwardingScore: 999, isForwarded: true}})
+    
+
+//await conn.send3TemplateButtonImg(m.chat, await genProfile(conn, m), text.trim(), wm, `🏅Owner`, `${_p}owner`, `🎖ThanksTo`, `${_p}tqto`, `🎗  Donasi  🎗`, `${_p}donasi`, m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
