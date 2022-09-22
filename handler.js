@@ -1,5 +1,6 @@
 let { Presence } = require('@adiwajshing/baileys')
 let { performance } = require('perf_hooks')
+let { fetch } = require('node-fetch')
 const simple = require('./lib/simple')
 const util = require('util')
 const moment = require('moment-timezone')
@@ -636,7 +637,7 @@ module.exports = {
    await conn.sendButtonDoc(id, text, wm, action == 'add' ? 'selamat datang' : 'sampai jumpa', action === 'add' ? '.intro' : 'the.sad.boy01', fake,{
   contextInfo: { externalAdReply :{
     showAdAttribution: true,
-    mediaUrl: 'https://youtu.be/c-06tx4vusw',
+    mediaUrl: 'https://nekopoi.care',
     mediaType: 2,
     description: data.deslink , 
     title: run,
