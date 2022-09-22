@@ -30,9 +30,9 @@ await conn.reply(m.chat, `Downloading media from twitter`, 0, {
   if (!video) throw 'Can\'t get video/image'
   let ress = result[index]
   conn.sendFile(m.chat, video, 'twitter' + /video/.test(ress.mime) ? '.mp4' : '.png', `
-*馃懁 Name:* ${res.name}
-*馃摦 Mime:* ${ress.mime}
-_漏锔�${wm}_
+*Name:* ${res.name}
+*Mime:* ${ress.mime}
+_漏 ${wm}_
 `.trim(), m)
 }
 handler.help = ['twitter'].map(v => v + ' <url>')
