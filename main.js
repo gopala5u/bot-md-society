@@ -36,7 +36,7 @@ const PORT = process.env.PORT || 3000
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 // console.log({ opts })
-global.prefix = new RegExp('^[' + (opts['prefix'] || 'â€ŽxzXZ/i!#$%+Â£Â¢â‚¬Â¥^Â°=Â¶âˆ†Ã—Ã·Ï€âˆšâœ“Â©Â®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
@@ -132,7 +132,19 @@ global.reloadHandler = function (restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate)
   }
 
-  conn.welcome = `*Hai @user !* \n\nSelamat Datang di Grup *@subject*`
+  conn.welcome = `*Hai @user ! 👋*
+         ‷✧ Selamat Datang di Grup
+           *@subject*
+           
+╭◪ *Intro Member Baru* ◪─
+│ ✧ *Nama:*
+│ ✧ *Umur:*
+│ ✧ *Status:*
+│ ✧ *Askot:*
+╰◪
+  
+              *◌  ⃝✧⪼ Deskripsi Group ミ*
+  @desc`
   conn.bye = 'Selamat tinggal @user!'
   conn.spromote = '@user sekarang admin!'
   conn.sdemote = '@user sekarang bukan admin!'
