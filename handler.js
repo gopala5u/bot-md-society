@@ -1,6 +1,5 @@
 let { Presence } = require('@adiwajshing/baileys')
 let { performance } = require('perf_hooks')
-let { fetch } = require('node-fetch')
 const simple = require('./lib/simple')
 const util = require('util')
 const moment = require('moment-timezone')
